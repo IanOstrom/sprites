@@ -74,9 +74,15 @@ function spawnHero () {
     hero.setPosition(12, 67)
     hero.setStayInScreen(true)
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+    otherSprite.setPosition(randint(0, 160), randint(0, 120))
+})
 let hero: Sprite = null
 let enemy3: Sprite = null
 let enemy2: Sprite = null
 let enemy1: Sprite = null
+info.setLife(3)
+info.setScore(0)
 spawnHero()
 spawnEnemies()
